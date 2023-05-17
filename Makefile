@@ -1,6 +1,5 @@
 install:
 	bundle install
-	cat .env.example >> .env
 
 start:
 	bin/rails s -p 3000 -b "0.0.0.0"
@@ -14,6 +13,9 @@ lint:
 
 console:
 	bin/rails console
+
+env:
+	cat .env.example >> .env
 
 test:
 	bundle exec rake
