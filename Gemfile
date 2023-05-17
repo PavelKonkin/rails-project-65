@@ -57,6 +57,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'i18n-debug'
   gem 'sqlite3', '~> 1.4'
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -75,6 +76,7 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'faker'
 end
 
 group :production do
@@ -91,3 +93,5 @@ gem 'simple_form'
 gem 'slim'
 gem 'slim_lint'
 gem 'slim-rails'
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'

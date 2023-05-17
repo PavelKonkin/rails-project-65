@@ -5,4 +5,4 @@
 ![GitHub Action Status](https://github.com/PavelKonkin/rails-project-65/actions/workflows/github_action.yml/badge.svg)
 
 ## Project deployed and available via link: 
-https://rails-project-65.up.railway.app
+https://hexlet-project-65.onrender.com

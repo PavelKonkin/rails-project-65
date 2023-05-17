@@ -2,11 +2,41 @@ doctype html
 html
   head
     title
-      | RailsProject65
+      = t('.community_blog_title')
     meta[name="viewport" content="width=device-width,initial-scale=1"]
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
+  header.py-1
+    nav class='navbar navbar-expand-md navbar-light fixed-top bg-light border-bottom'
+      .container-fluid
+        .collapse.navbar-collapse.justify-content-between
+          .ul.navbar-nav
+            .li.navbar-item.ms-5
+              = link_to t('.home'), root_path, class: 'nav-link link-dark'
+          .ul.navbar-nav.ml-auto
+            - if current_user
+              .li.navbar-text.me-5
+                = current_user.email
+              .li.navbar-item
+                = link_to t('.new_post'), 'new_post_path', class: 'nav-link link-dark'
+              .li.navbar-item
+                = link_to t('.sign_out'), sessions_path, data: { turbo_method: :delete }, class: 'nav-link link-dark'
+            - else
+              .li.navbar-item
+                = form_tag auth_request_url(:github), method: :post, class: 'btn w-100 border btn-outline-secondary' do
+                  button.bi.bi-github type='submit'
   body
+    - if notice
+      .alert.alert-success.mt-5 role='alert'
+        = notice
+    - if alert
+      .alert.alert-danger.mt-5 role='alert'
+        = alert
     = yield
+
+  footer class='footer mt-auto py-3 bg-light fixed-bottom'
+    .container
+      span class='text-muted'
+         = t('.year', year: Time.current.year)
