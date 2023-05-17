@@ -55,9 +55,9 @@ gem 'bootsnap', require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'dotenv-rails'
   gem 'i18n-debug'
   gem 'sqlite3', '~> 1.4'
-  gem 'dotenv-rails'
 end
 
 group :development do
@@ -74,9 +74,9 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+  gem 'faker'
   gem 'selenium-webdriver'
   gem 'webdrivers'
-  gem 'faker'
 end
 
 group :production do
@@ -84,6 +84,8 @@ group :production do
 end
 
 gem 'minitest-power_assert'
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
 gem 'rails-i18n'
 gem 'rollbar'
 gem 'rubocop'
@@ -93,5 +95,3 @@ gem 'simple_form'
 gem 'slim'
 gem 'slim_lint'
 gem 'slim-rails'
-gem 'omniauth-github'
-gem 'omniauth-rails_csrf_protection'
