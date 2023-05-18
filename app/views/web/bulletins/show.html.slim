@@ -1,0 +1,18 @@
+.container.card.mt-5
+  h1.pt-3 = @bulletin.title
+  hr
+  .container
+    .row.row-cols-1.row-cols-md-2.g-4
+      .col
+        .card.h-100
+          - if @bulletin.image_attachment
+            = image_tag @bulletin.image.variant(resize_to_limit: [1000, 1000]), class: 'card-img-top img-thumbnail'
+          .card-body
+            .p.card-text
+              = @bulletin.description
+      .col
+        .card
+          h4.card-title = current_user.name
+  hr
+
+  = link_to t('back'), :back, class: 'btn btn-outline-primary'

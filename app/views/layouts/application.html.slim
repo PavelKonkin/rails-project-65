@@ -8,7 +8,7 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
-  header.py-1
+  header.pb-5
     nav class='navbar navbar-expand-md navbar-light fixed-top bg-light border-bottom'
       .container-fluid
         .collapse.navbar-collapse.justify-content-between
@@ -20,13 +20,15 @@ html
               .li.navbar-text.me-5
                 = current_user.email
               .li.navbar-item
-                = link_to t('.new_post'), 'new_post_path', class: 'nav-link link-dark'
+                = link_to t('.new_bulletin'), new_bulletin_path, class: 'nav-link link-dark'
               .li.navbar-item
                 = link_to t('.sign_out'), sessions_path, class: 'nav-link link-dark'
             - else
               .li.navbar-item
-                = form_tag auth_request_url(:github), method: :post, data: { turbo: false }, class: 'btn w-100 border btn-outline-secondary' do
-                  button.bi.bi-github type='submit'
+                = button_to auth_request_url(:github), method: :post, data: { turbo: true }, class: 'btn w-100' do
+                  span.bi.bi-github
+                  |<
+                  =t('sign_in')
   body
     - if notice
       .alert.alert-success.mt-5 role='alert'

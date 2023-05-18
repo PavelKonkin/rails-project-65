@@ -56,6 +56,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
+  gem 'faker'
   gem 'i18n-debug'
   gem 'sqlite3', '~> 1.4'
 end
@@ -74,7 +75,6 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
-  gem 'faker'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
@@ -83,6 +83,10 @@ group :production do
   gem 'pg'
 end
 
+gem 'active_storage_validations'
+gem 'aws-sdk-s3'
+gem 'file_validators'
+gem 'image_processing'
 gem 'minitest-power_assert'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'

@@ -8,6 +8,6 @@ class Web::AuthController < ApplicationController
     @current_user = User.find_by(email:)
     @current_user ||= User.create(name:, email:)
     sign_in @current_user
-    redirect_to root_path
+    redirect_to root_path, notice: t('success')
   end
 end

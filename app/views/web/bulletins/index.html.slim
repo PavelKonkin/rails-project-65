@@ -1,0 +1,13 @@
+.container.card.mt-5
+  h1.pt-3 = t('.bulletin_board')
+  hr
+  .container
+    .row.row-cols-1.row-cols-md-4.g-4
+      - @bulletins.each do |bulletin|
+        .col
+          .card.h-100
+            - if bulletin.image_attachment
+              = image_tag bulletin.image.variant(resize_to_limit: [1000, 1000]), class: 'card-img-top img-thumbnail'
+            .card-body
+              .h5.card-title = link_to bulletin.title, bulletin
+              .p.card-text = t('.created')
