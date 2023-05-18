@@ -25,7 +25,7 @@ html
                 = link_to t('.sign_out'), sessions_path, class: 'nav-link link-dark'
             - else
               .li.navbar-item
-                = button_to auth_request_url(:github), method: :post, data: { turbo: true }, class: 'btn w-100' do
+                = button_to auth_request_url(:github), method: :post, data: { turbo: false }, class: 'btn w-100' do
                   span.bi.bi-github
                   |<
                   =t('sign_in')
