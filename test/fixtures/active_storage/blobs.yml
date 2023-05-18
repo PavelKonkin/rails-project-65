@@ -1,8 +1,0 @@
-ones_picture_blob:
-  key: 9wf1z33elleaag3x9iagcq1kfmwf
-  filename: one.jpg
-  content_type: image/jpeg
-  metadata: '{"identified":true,"analyzed":true}'
-  byte_size: <%= File.size('tmp/storage/9w/f1/one.jpg') %>
-  checksum: <%= Digest::MD5.file('tmp/storage/9w/f1/one.jpg').base64digest %>
-  service_name: local
