@@ -1,0 +1,26 @@
+.container
+  .row
+    .col-md-3
+      .ul.nav.flex-column.nav-pills
+        .li.nav-item
+          = link_to t('bulletin_list'), admin_root_path, class: 'nav-link link-dark active'
+        .li.nav-item
+          = link_to t('users_list'), admin_users_path, class: 'nav-link link-dark'
+        .li.nav-item
+          = link_to t('categories_list'), admin_categories_path, class: 'nav-link link-dark'
+    .col.md-9
+      h1.h2.mb-4 = t('bulletins')
+      .row.mt-2
+        table.table.table-borderless
+          thead
+            tr
+              th = t('title')
+              th = t('created')
+              th = t('actions')
+          tbody
+            - @bulletins.each do |bulletin|
+              tr
+                td = bulletin.title
+                td = distance_of_time_in_words_to_now(bulletin.created_at)
+                td
+                  = link_to t('show'), bulletin_path(bulletin)

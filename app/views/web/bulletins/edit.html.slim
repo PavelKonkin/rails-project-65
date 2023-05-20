@@ -1,2 +1,7 @@
-h1 Web::Bulletins#edit
-p Find me in app/views/web/bulletins/edit.html.slim
+.container.card.mt-5
+  h1.pt-3 = t('.edit_bulletin')
+  hr
+  = render 'form'
+  hr
+
+  = link_to t('back'), :back, class: 'btn btn-outline-primary'

@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :sign_in, :sign_out
+  include Pundit::Authorization
+  helper_method :current_user, :sign_in, :sign_out, :signed_in?
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
@@ -14,5 +15,9 @@ class ApplicationController < ActionController::Base
   def sign_out
     session.delete(:user_id)
     session.clear
+  end
+
+  def signed_in?
+    session[:user_id].present? && current_user.present?
   end
 end

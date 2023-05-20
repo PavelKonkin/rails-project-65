@@ -1,11 +1,18 @@
 = simple_form_for @bulletin do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
   .form-inputs
     = f.input :title
     = f.input :description
     = f.association :category
     - if @bulletin.image_attachment
       = image_tag @bulletin.image.variant(resize_to_limit: [200, 100]), class: 'img-thumbnail mb-2'
-    = f.file_field :image
+    .form-group.file.required.bulletin_image
+     = f.label :image, class: 'file required', for: 'bulletin_image'
+       = t('photo')
+       abbr *
+     = f.file_field :image, id: 'bulletin_image', name: 'bulletin[image]', class: 'form-control-file file required form-control'
     hr
   .form-actions
     = f.button :submit, class: 'btn btn-primary'
