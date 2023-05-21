@@ -1,6 +1,29 @@
 # frozen_string_literal: true
 
 class Bulletin < ApplicationRecord
+  include AASM
+
+  aasm skip_validation_on_save: true, whiny_transitions: false, column: 'state' do
+    state :draft, initial: true
+    state :under_moderation, :published, :rejected, :archived
+
+    event :to_moderation do
+      transitions from: %i[draft rejected], to: :under_moderation
+    end
+
+    event :publish do
+      transitions from: :under_moderation, to: :published
+    end
+
+    event :reject do
+      transitions from: :under_moderation, to: :rejected
+    end
+
+    event :to_archive do
+      transitions from: %i[under_moderation published rejected draft], to: :archived
+    end
+  end
+
   has_one_attached :image
   belongs_to :user
   belongs_to :category

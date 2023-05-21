@@ -29,6 +29,22 @@ class BulletinPolicy < ApplicationPolicy
     @user&.admin?
   end
 
+  def to_moderation?
+    author?
+  end
+
+  def to_archive?
+    author? || @user&.admin?
+  end
+
+  def publish?
+    @user&.admin?
+  end
+
+  def reject?
+    @user&.admin?
+  end
+
   private
 
   def author?

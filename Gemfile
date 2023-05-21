@@ -83,6 +83,7 @@ group :production do
   gem 'pg'
 end
 
+gem 'aasm'
 gem 'active_storage_validations'
 gem 'aws-sdk-s3'
 gem 'file_validators'

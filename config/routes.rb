@@ -2,12 +2,22 @@
 
 Rails.application.routes.draw do
   scope module: :web do
-    resources :bulletins
-    # root 'bulletins#index'
+    namespace :profile do
+      root 'bulletins#index'
+      resources :bulletins, except: :index do
+        member do
+          patch :to_moderation, :to_archive
+        end
+      end
+    end
     root 'home#index'
     namespace :admin do
       root 'home#index'
-      resources :bulletins, only: %i[index show]
+      resources :bulletins, only: %i[index show] do
+        member do
+          patch :reject, :publish, :to_archive
+        end
+      end
       resources :users, only: %i[index edit update]
       resources :categories, only: %i[index new create edit update destroy]
     end

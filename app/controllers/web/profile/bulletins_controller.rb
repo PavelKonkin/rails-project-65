@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Web::BulletinsController < Web::ApplicationController
+class Web::Profile::BulletinsController < Web::ApplicationController
   def index
     @bulletins = Bulletin.where(user: current_user).order(created_at: :desc)
   end
@@ -23,7 +23,7 @@ class Web::BulletinsController < Web::ApplicationController
     @bulletin = current_user.bulletins.build(bulletin_params)
     authorize @bulletin
     if @bulletin.save
-      redirect_to root_path, notice: t('.bulletin_created')
+      redirect_to profile_root_path, notice: t('.bulletin_created')
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,10 +33,24 @@ class Web::BulletinsController < Web::ApplicationController
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
     if @bulletin.update(bulletin_params)
-      redirect_to bulletin_path, notice: t('success')
+      redirect_to profile_bulletin_path(@bulletin), notice: t('success')
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def to_moderation
+    bulletin = Bulletin.find(params[:id])
+    authorize bulletin
+    bulletin.to_moderation!
+    redirect_to profile_root_path, notice: t('success')
+  end
+
+  def to_archive
+    bulletin = Bulletin.find(params[:id])
+    authorize bulletin
+    bulletin.to_archive!
+    redirect_to profile_root_path, notice: t('success')
   end
 
   private
