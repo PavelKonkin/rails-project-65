@@ -15,7 +15,7 @@ class Web::Admin::UsersController < Web::Admin::ApplicationController
     @user = User.find(params[:id])
     authorize @user
     if @user.update(user_params)
-      redirect_to admin_users_path, notice: t('success')
+      redirect_to admin_users_path, notice: t('.updated')
     else
       rediresct_to :edit, status: :unprocessable_entity
     end

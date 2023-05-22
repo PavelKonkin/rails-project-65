@@ -3,27 +3,27 @@
     .col-md-3
       .ul.nav.flex-column.nav-pills
         .li.nav-item
-          = link_to t('bulletin_list'), admin_root_path, class: 'nav-link link-dark'
+          = link_to t('.bulletins_list'), admin_root_path, class: 'nav-link link-dark'
         .li.nav-item
-          = link_to t('users_list'), admin_users_path, class: 'nav-link link-dark'
+          = link_to t('.users_list'), admin_users_path, class: 'nav-link link-dark'
         .li.nav-item
-          = link_to t('categories_list'), admin_categories_path, class: 'nav-link link-dark active'
+          = link_to t('.categories_list'), admin_categories_path, class: 'nav-link link-dark active'
     .col.md-9
-      h1.h2.mb-4 = t('categories')
-      = link_to t('add_category'), new_admin_category_path
+      h1.h2.mb-4 = t('.categories')
+      = link_to t('.add_category'), new_admin_category_path
       .row.mt-2
         table.table.table-borderless
           thead
             tr
-              th = t('id')
-              th = t('name')
-              th = t('actions')
+              th = t('.id')
+              th = t('.name')
+              th = t('.actions')
           tbody
             - @categories.each do |category|
               tr
                 td = category.id
                 td = category.name
                 td
-                  = link_to t('edit'), edit_admin_category_path(category)
+                  = link_to t('.edit'), edit_admin_category_path(category)
                 td
-                  = button_to t('destroy'), admin_category_path(category), method: :delete, data: { confirm: t('confirm_delete') }, class: 'nav-link link-danger'
+                  = button_to t('.destroy'), admin_category_path(category), method: :delete, data: { confirm: t('.confirm_delete') }, class: 'nav-link link-danger'

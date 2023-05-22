@@ -20,7 +20,7 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
     @category = Category.new(category_params)
     authorize @category
     if @category.save
-      redirect_to admin_categories_path, notice: t('success')
+      redirect_to admin_categories_path, notice: t('.created')
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,7 +30,7 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
     @category = Category.find(params[:id])
     authorize @category
     if @category.update(category_params)
-      redirect_to admin_categories_path, notice: t('success')
+      redirect_to admin_categories_path, notice: t('.updated')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -40,7 +40,7 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
     @category = Category.find(params[:id])
     authorize @category
     @category.destroy
-    redirect_to admin_categories_path, notice: t('success')
+    redirect_to admin_categories_path, notice: t('.deleted')
   end
 
   private

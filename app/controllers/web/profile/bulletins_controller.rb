@@ -2,7 +2,8 @@
 
 class Web::Profile::BulletinsController < Web::ApplicationController
   def index
-    @bulletins = Bulletin.where(user: current_user).order(created_at: :desc)
+    @q = Bulletin.ransack(params[:q])
+    @bulletins = @q.result.where(user: current_user).order(created_at: :desc)
   end
 
   def show
@@ -33,7 +34,7 @@ class Web::Profile::BulletinsController < Web::ApplicationController
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
     if @bulletin.update(bulletin_params)
-      redirect_to profile_bulletin_path(@bulletin), notice: t('success')
+      redirect_to profile_bulletin_path(@bulletin), notice: t('.bulletin_updated')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -43,14 +44,14 @@ class Web::Profile::BulletinsController < Web::ApplicationController
     bulletin = Bulletin.find(params[:id])
     authorize bulletin
     bulletin.to_moderation!
-    redirect_to profile_root_path, notice: t('success')
+    redirect_to profile_root_path, notice: t('.sent_to_moderation')
   end
 
   def to_archive
     bulletin = Bulletin.find(params[:id])
     authorize bulletin
     bulletin.to_archive!
-    redirect_to profile_root_path, notice: t('success')
+    redirect_to profile_root_path, notice: t('.sent_to_archive')
   end
 
   private

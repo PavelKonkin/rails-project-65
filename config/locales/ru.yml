@@ -1,0 +1,156 @@
+ru:
+  archived: В архиве
+  draft: Черновик
+  under_moderation: На модерации
+  rejected: Возвращено
+  published: Опубликовано
+  attributes:
+    title: Название
+    description: Описание
+    category: Категория
+    name: Имя
+  layouts:
+    application:
+      admin_panel: Админка
+      bulletin_board_title: Доска объявлений
+      sign_out: Выйти
+      year: Павел Конкин, %{year}
+      bulletin_board: Доска объявлений
+      home: Главная
+      my_bulletins: Мои объявления
+      add_bulletin: Добавить объявление
+  web:
+    admin:
+      home:
+        index:
+          bulletins_list: Cписок объявлений
+          users_list: Список пользователей
+          categories_list: Список категорий
+          bulletins: Объявления
+          title: Название
+          state: Состояние
+          created_at: Дата создания
+          actions: Действия
+          show: Показать
+          to_archive: В архив
+          publish: Опубликовать
+          reject: Вернуть
+          search_by_title: Найти по наименовнию
+          select_state: Выберите состояние
+          search: Найти
+          reset: Сброс
+      users:
+        index:
+          bulletins_list: Cписок объявлений
+          users_list: Список пользователей
+          categories_list: Список категорий
+          users: Пользователи
+          name: Имя
+          email: email
+          actions: Действия
+          edit: Редактировать
+        edit:
+          bulletins_list: Cписок объявлений
+          users_list: Список пользователей
+          categories_list: Список категорий
+          edit_user: Редактировать пользователя
+          name: Имя
+        update:
+          updated: Данные пользователя обновлены
+        form:
+          edit: Обновить
+      categories:
+        index:
+          bulletins_list: Cписок объявлений
+          users_list: Список пользователей
+          categories_list: Список категорий
+          categories: Категории
+          add_category: Добавить категорию
+          id: id
+          name: Имя
+          actions: Действия
+          edit: Редактировать
+          destroy: Удалить
+          confirm_delete: Подтвердите удаление категории
+        new:
+          bulletins_list: Cписок объявлений
+          users_list: Список пользователей
+          categories_list: Список категорий
+          new_category: Новая категория
+        edit:
+          bulletins_list: Cписок объявлений
+          users_list: Список пользователей
+          categories_list: Список категорий
+          edit_category: Редактировать категорию
+        update:
+          updated: Категория обновлена
+        create:
+          created: Категория создана
+        destroy:
+          deleted: Категория удалена
+        form:
+          new: Создать
+          edit: Обновить
+      bulletins:
+        reject:
+          rejected: Возвращено
+        publish:
+          published: Опубликовано
+        to_archive:
+          archived: Отправлено в архив
+    session:
+      destroy:
+        signed_out: Выход выполнен
+    auth:
+      callback:
+        signed_in: Вход выполнен
+    home:
+      index:
+        bulletin_board: Доска объявлений
+        search_by_title: Найти по наименовнию
+        select_category: Выберите категорию
+        search: Найти
+        reset: Сброс
+        ago: назад
+    profile:
+      bulletins:
+        index:
+          my_bulletins: Мои объявления
+          add_bulletin: Добавить объявление
+          title: Название
+          state: Состояние
+          created_at: Дата создания
+          actions: Действия
+          show: Показать
+          edit: Редактировать
+          to_archive: В архив
+          to_moderation: На модерацию 
+          search_by_title: Найти по наименовнию
+          select_state: Выберите состояние
+          search: Найти
+          reset: Сброс
+        edit:
+          edit_bulletin: Редактировать объявление
+          back: Назад
+        create:
+          bulletin_created: Объявление создано
+        new:
+          new_bulletin: Новое объявление
+          back: Назад
+        update:
+          bulletin_updated: Объявление обновлено
+        to_moderation:
+          sent_to_moderation: Отправлено на модерацию
+        to_archive:
+          sent_to_archive: Отправлено в архив
+        show:
+          back: Назад
+        form:
+          photo: Фотография
+  helpers:
+    submit:
+      update: Сохранить изменения
+      create: Создать
+      bulletin:
+        create: Сохранить
+        update: Сохранить изменения

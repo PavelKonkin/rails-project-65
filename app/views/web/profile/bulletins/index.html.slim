@@ -4,29 +4,41 @@
       .row
         .p-3.p-lg-5.pt-lg-0
           .mb-4
-            h2 = t('my_bulletins')
+            h2 = t('.my_bulletins')
             hr
-          = link_to t('add_bulletin'), new_profile_bulletin_path
+          = link_to t('.add_bulletin'), new_profile_bulletin_path
+          .p-3.bg-light
+            = search_form_for @q, url: profile_root_path do |f|
+              .row.my-2
+                .col-6
+                  = f.input :title_cont, label: false
+                  small.form-text.text-muted = t('.search_by_title')
+                .col-4
+                  = f.input :state_eq, as: :select, collection: Bulletin.aasm.states.map(&:name), label_method: proc { |val| t(val) }, label: false
+                  small.form-text.text-muted = t('.select_state')
+                .col-2
+                  = f.submit t('.search'), class: 'btn btn-primary me-2'
+                  = link_to t('.reset'), url_for, class: 'btn btn-outline-primary'
           .row.mt-2
             table.table.table-borderless
               thead
                 tr
-                  th = t('title')
-                  th = t('state')
-                  th = t('created_at')
-                  th = t('actions')
+                  th = t('.title')
+                  th = t('.state')
+                  th = t('.created_at')
+                  th = t('.actions')
               tbody
                 - @bulletins.each do |bulletin|
                   tr
                     td = bulletin.title
-                    td = bulletin.state
+                    td = t(bulletin.state)
                     td = distance_of_time_in_words_to_now(bulletin.created_at)
                     td
-                      = link_to t('show'), profile_bulletin_path(bulletin), class: 'me-2'
-                      = link_to t('edit'), edit_profile_bulletin_path(bulletin), class: 'me-2'
+                      = link_to t('.show'), profile_bulletin_path(bulletin), class: 'me-2'
+                      = link_to t('.edit'), edit_profile_bulletin_path(bulletin), class: 'me-2'
                     - if bulletin.aasm.states(permitted: true).map(&:name).include? :under_moderation
                       td
-                        = button_to t('to_moderation'), to_moderation_profile_bulletin_path(bulletin), method: :patch, data: { turbo: true }, class: 'btn btn-link'
+                        = button_to t('.to_moderation'), to_moderation_profile_bulletin_path(bulletin), method: :patch, data: { turbo: true }, class: 'btn btn-link'
                     - if bulletin.aasm.states(permitted: true).map(&:name).include? :archived
                       td
-                        = button_to t('to_archive'), to_archive_profile_bulletin_path(bulletin), method: :patch, data: { turbo: true }, class: 'btn btn-link link-danger'
+                        = button_to t('.to_archive'), to_archive_profile_bulletin_path(bulletin), method: :patch, data: { turbo: true }, class: 'btn btn-link link-danger'
