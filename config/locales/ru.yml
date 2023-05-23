@@ -39,6 +39,7 @@ ru:
           select_state: Выберите состояние
           search: Найти
           reset: Сброс
+          forbidden: Вход только для администраторов
       users:
         index:
           bulletins_list: Cписок объявлений
@@ -129,6 +130,7 @@ ru:
           select_state: Выберите состояние
           search: Найти
           reset: Сброс
+          forbidden: Войдите для доступа к профилю
         edit:
           edit_bulletin: Редактировать объявление
           back: Назад
@@ -154,3 +156,10 @@ ru:
       bulletin:
         create: Сохранить
         update: Сохранить изменения
+  views:
+    pagination:
+      first: "Первая"
+      last: "Последняя"
+      previous: "Предыдущая"
+      next: "Следующая"
+      truncate: "&hellip;"

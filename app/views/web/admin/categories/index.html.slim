@@ -27,3 +27,5 @@
                   = link_to t('.edit'), edit_admin_category_path(category)
                 td
                   = button_to t('.destroy'), admin_category_path(category), method: :delete, data: { confirm: t('.confirm_delete') }, class: 'nav-link link-danger'
+      .py-3
+        = paginate @categories, window: 2

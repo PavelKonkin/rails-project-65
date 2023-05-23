@@ -2,7 +2,7 @@
 
 class Web::Admin::UsersController < Web::Admin::ApplicationController
   def index
-    @users = User.all
+    @users = User.all.page(params[:page])
     authorize @users
   end
 

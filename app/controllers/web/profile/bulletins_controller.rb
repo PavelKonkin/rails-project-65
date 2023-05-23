@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class Web::Profile::BulletinsController < Web::ApplicationController
+class Web::Profile::BulletinsController < Web::Profile::ApplicationController
   def index
     @q = Bulletin.ransack(params[:q])
-    @bulletins = @q.result.where(user: current_user).order(created_at: :desc)
+    @bulletins = @q.result.where(user: current_user).order(created_at: :desc).page(params[:page])
   end
 
   def show

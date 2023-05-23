@@ -39,6 +39,7 @@ en:
           select_state: Select state
           search: Search
           reset: Reset
+          forbidden: Admins only
       users:
         index:
           bulletins_list: Bulletins list
@@ -129,6 +130,7 @@ en:
           select_state: Select state
           search: Search
           reset: Reset
+          forbidden: You must sign in to access profile page
         edit:
           edit_bulletin: Edit bulletin
           back: Back
@@ -154,3 +156,10 @@ en:
       bulletin:
         create: Create
         update: Update
+  views:
+    pagination:
+      first: "First"
+      last: "Last"
+      previous: "Prev"
+      next: "Next"
+      truncate: "&hellip;"

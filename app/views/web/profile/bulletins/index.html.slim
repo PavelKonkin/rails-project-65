@@ -42,3 +42,5 @@
                     - if bulletin.aasm.states(permitted: true).map(&:name).include? :archived
                       td
                         = button_to t('.to_archive'), to_archive_profile_bulletin_path(bulletin), method: :patch, data: { turbo: true }, class: 'btn btn-link link-danger'
+          .py-3
+            = paginate @bulletins
