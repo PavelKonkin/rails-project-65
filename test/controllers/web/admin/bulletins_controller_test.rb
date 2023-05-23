@@ -19,28 +19,28 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get transition to publish from under_moderation' do
+  test 'should make transition to publish from under_moderation' do
     patch publish_admin_bulletin_path(@bulletin_under_moderation)
     @bulletin_under_moderation.reload
     assert { @bulletin_under_moderation.published? }
     assert_redirected_to admin_root_url
   end
 
-  test 'should get transition to reject publish from under_moderation' do
+  test 'should make transition to reject publish from under_moderation' do
     patch reject_admin_bulletin_path(@bulletin_under_moderation)
     @bulletin_under_moderation.reload
     assert { @bulletin_under_moderation.rejected? }
     assert_redirected_to admin_root_url
   end
 
-  test 'should get transition to archived from under_moderation' do
+  test 'should make transition to archived from under_moderation' do
     patch to_archive_admin_bulletin_path(@bulletin_under_moderation)
     @bulletin_under_moderation.reload
     assert { @bulletin_under_moderation.archived? }
     assert_redirected_to admin_root_url
   end
 
-  test 'should not get transition to published from draft' do
+  test 'should not make transition to published from draft' do
     patch publish_admin_bulletin_path(@bulletin_draft)
     @bulletin_draft.reload
     assert { @bulletin_draft.draft? }

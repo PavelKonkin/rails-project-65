@@ -27,37 +27,37 @@ class Web::Profile::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get create' do
+  test 'should create' do
     post profile_bulletins_url, params: { bulletin: { title: @bulletin.title, description: @bulletin.description, user_id: @bulletin.user_id, category_id: @bulletin.category_id, image: @image } }
     assert_response :redirect
   end
 
-  test 'should get edit' do
+  test 'should edit' do
     get edit_profile_bulletin_url @bulletin
     assert_response :success
   end
 
-  test 'should get update' do
+  test 'should update' do
     sign_in users(:two)
     patch profile_bulletin_url(@bulletin2), params: { bulletin: { title: @bulletin.title, description: @bulletin.description, user_id: @bulletin2.user_id, category_id: @bulletin.category_id, image: @update_image } }
     assert_response :redirect
   end
 
-  test 'should get transition to under_moderation from draft' do
+  test 'should make transition to under_moderation from draft' do
     patch to_moderation_profile_bulletin_path(@bulletin)
     @bulletin.reload
     assert { @bulletin.under_moderation? }
     assert_redirected_to profile_root_url
   end
 
-  test 'should get transition to archived from draft' do
+  test 'should make transition to archived from draft' do
     patch to_archive_profile_bulletin_path(@bulletin)
     @bulletin.reload
     assert { @bulletin.archived? }
     assert_redirected_to profile_root_url
   end
 
-  test 'should not get transition to under_moderation from archive' do
+  test 'should not make transition to under_moderation from archive' do
     patch to_moderation_profile_bulletin_path(@bulletin3)
     @bulletin3.reload
     assert { @bulletin3.archived? }
