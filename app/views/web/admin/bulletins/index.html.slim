@@ -46,6 +46,6 @@
                     = button_to t('.reject'), reject_admin_bulletin_path(bulletin), method: :patch, data: { turbo: true }, class: 'btn btn-link'
                 - if bulletin.aasm.states(permitted: true).map(&:name).include? :archived
                   td
-                    = button_to t('.to_archive'), archive_admin_bulletin_path(bulletin), method: :patch, data: { turbo: true, turbo_confirm: 'Are you sure?' }, class: 'btn btn-link link-danger'
+                    = button_to t('.to_archive'), archive_admin_bulletin_path(bulletin), method: :patch, data: { turbo: true }, class: 'btn btn-link link-danger'
       .py-3
         = paginate @bulletins
