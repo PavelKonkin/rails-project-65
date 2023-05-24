@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
     root 'bulletins#index'
     namespace :admin do
-      root 'home#index'
+      root 'bulletins#index'
       resources :bulletins, only: %i[index show] do
         member do
           patch :reject, :publish, :archive

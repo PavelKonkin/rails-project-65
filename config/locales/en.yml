@@ -21,7 +21,7 @@ en:
       add_bulletin: Add bulletin
   web:
     admin:
-      home:
+      bulletins:
         index:
           bulletins_list: Bulletins list
           users_list: Users list
@@ -40,6 +40,12 @@ en:
           search: Search
           reset: Reset
           forbidden: Admins only
+        reject:
+          rejected: Rejected
+        publish:
+          published: Published
+        archive:
+          archived: Archived
       users:
         index:
           bulletins_list: Bulletins list
@@ -142,7 +148,7 @@ en:
           bulletin_updated: Bulletin updated
         to_moderation:
           sent_to_moderation: Sent to moderstion
-        to_archive:
+        archive:
           sent_to_archive: Sent to archive
         show:
           back: Back

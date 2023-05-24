@@ -19,9 +19,9 @@ ru:
       home: Главная
       my_bulletins: Мои объявления
       add_bulletin: Добавить объявление
-  web:
+  web: 
     admin:
-      home:
+      bulletins:
         index:
           bulletins_list: Cписок объявлений
           users_list: Список пользователей
@@ -40,6 +40,12 @@ ru:
           search: Найти
           reset: Сброс
           forbidden: Вход только для администраторов
+        reject:
+          rejected: Возвращено
+        publish:
+          published: Опубликовано
+        archive:
+          archived: Отправлено в архив
       users:
         index:
           bulletins_list: Cписок объявлений
@@ -92,13 +98,6 @@ ru:
         form:
           new: Создать
           edit: Обновить
-      bulletins:
-        reject:
-          rejected: Возвращено
-        publish:
-          published: Опубликовано
-        to_archive:
-          archived: Отправлено в архив
     session:
       destroy:
         signed_out: Выход выполнен
@@ -143,7 +142,7 @@ ru:
           bulletin_updated: Объявление обновлено
         to_moderation:
           sent_to_moderation: Отправлено на модерацию
-        to_archive:
+        archive:
           sent_to_archive: Отправлено в архив
         show:
           back: Назад
