@@ -15,7 +15,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get show' do
-    get profile_bulletin_url(@bulletin_draft)
+    get bulletin_url(@bulletin_draft)
     assert_response :success
   end
 
@@ -34,7 +34,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should make transition to archived from under_moderation' do
-    patch to_archive_admin_bulletin_path(@bulletin_under_moderation)
+    patch archive_admin_bulletin_path(@bulletin_under_moderation)
     @bulletin_under_moderation.reload
     assert { @bulletin_under_moderation.archived? }
     assert_redirected_to admin_root_url

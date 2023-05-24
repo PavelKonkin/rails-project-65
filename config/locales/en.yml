@@ -105,16 +105,15 @@ en:
     auth:
       callback:
         signed_in: Signed in
-    home:
-      index:
+    profile:
+      show:
         bulletin_board: Bulletin board
         search_by_title: Search by title
         select_category: Select category
         search: Search
         reset: Reset
         ago: ago
-    profile:
-      bulletins:
+    bulletins:
         index:
           my_bulletins: My bulletins
           add_bulletin: Add bulletin

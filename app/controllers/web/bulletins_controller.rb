@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
-class Web::Profile::BulletinsController < Web::Profile::ApplicationController
+class Web::BulletinsController < Web::ApplicationController
+  before_action :authenticate_user, except: %i[index show]
+
   def index
     @q = Bulletin.ransack(params[:q])
-    @bulletins = @q.result.where(user: current_user).order(created_at: :desc).page(params[:page])
+    @bulletins = @q.result.published.order(created_at: :desc).page(params[:page]).per(16)
   end
 
   def show
@@ -24,7 +26,7 @@ class Web::Profile::BulletinsController < Web::Profile::ApplicationController
     @bulletin = current_user.bulletins.build(bulletin_params)
     authorize @bulletin
     if @bulletin.save
-      redirect_to profile_root_path, notice: t('.bulletin_created')
+      redirect_to profile_path, notice: t('.bulletin_created')
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,7 +36,7 @@ class Web::Profile::BulletinsController < Web::Profile::ApplicationController
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
     if @bulletin.update(bulletin_params)
-      redirect_to profile_bulletin_path(@bulletin), notice: t('.bulletin_updated')
+      redirect_to bulletin_path(@bulletin), notice: t('.bulletin_updated')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,14 +46,14 @@ class Web::Profile::BulletinsController < Web::Profile::ApplicationController
     bulletin = Bulletin.find(params[:id])
     authorize bulletin
     bulletin.to_moderation!
-    redirect_to profile_root_path, notice: t('.sent_to_moderation')
+    redirect_to profile_path, notice: t('.sent_to_moderation')
   end
 
-  def to_archive
+  def archive
     bulletin = Bulletin.find(params[:id])
     authorize bulletin
     bulletin.to_archive!
-    redirect_to profile_root_path, notice: t('.sent_to_archive')
+    redirect_to profile_path, notice: t('.sent_to_archive')
   end
 
   private

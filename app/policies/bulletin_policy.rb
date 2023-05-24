@@ -33,7 +33,7 @@ class BulletinPolicy < ApplicationPolicy
     author?
   end
 
-  def to_archive?
+  def archive?
     author? || @user&.admin?
   end
 

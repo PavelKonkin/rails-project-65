@@ -21,7 +21,7 @@
             - if bulletin.image_attachment
               = image_tag bulletin.image.variant(resize_to_limit: [1000, 1000]), class: 'card-img-top img-thumbnail'
             .card-body
-              .h5.card-title = link_to bulletin.title, profile_bulletin_path(bulletin)
+              .h5.card-title = link_to bulletin.title, bulletin_path(bulletin)
               .p.card-text = "#{distance_of_time_in_words_to_now(bulletin.created_at)} #{t('.ago')}"
     .py-3
       = paginate @bulletins

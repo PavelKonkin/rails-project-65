@@ -105,17 +105,8 @@ ru:
     auth:
       callback:
         signed_in: Вход выполнен
-    home:
-      index:
-        bulletin_board: Доска объявлений
-        search_by_title: Найти по наименовнию
-        select_category: Выберите категорию
-        search: Найти
-        reset: Сброс
-        ago: назад
     profile:
-      bulletins:
-        index:
+      show:
           my_bulletins: Мои объявления
           add_bulletin: Добавить объявление
           title: Название
@@ -130,7 +121,16 @@ ru:
           select_state: Выберите состояние
           search: Найти
           reset: Сброс
+          ago: назад
           forbidden: Войдите для доступа к профилю
+    bulletins:
+        index:
+          bulletin_board: Доска объявлений
+          search_by_title: Найти по наименовнию
+          select_category: Выберите категорию
+          search: Найти
+          reset: Сброс
+          ago: назад
         edit:
           edit_bulletin: Редактировать объявление
           back: Назад

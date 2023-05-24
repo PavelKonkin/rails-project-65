@@ -18,7 +18,7 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
     redirect_to admin_root_path, notice: t('.published')
   end
 
-  def to_archive
+  def archive
     bulletin = Bulletin.find(params[:id])
     authorize bulletin
     bulletin.to_archive!

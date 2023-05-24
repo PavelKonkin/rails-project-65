@@ -1,7 +1,7 @@
 .container.card.mt-5
   h1.pt-3 = t('.new_bulletin')
   hr
-  = render 'form', url: profile_bulletins_path(@bulletin)
+  = render 'form', url: bulletins_path(@bulletin)
   hr
 
   = link_to t('.back'), :back, class: 'btn btn-outline-primary'
