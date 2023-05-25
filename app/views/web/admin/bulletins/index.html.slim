@@ -37,15 +37,12 @@
                 td = t(bulletin.state)
                 td = distance_of_time_in_words_to_now(bulletin.created_at)
                 td
-                  = link_to t('.show'), bulletin_path(bulletin)
-                - if bulletin.aasm.states(permitted: true).map(&:name).include? :published
-                  td
-                    = button_to t('.publish'), publish_admin_bulletin_path(bulletin), method: :patch, data: { turbo: true }, class: 'btn btn-link'
-                - if bulletin.aasm.states(permitted: true).map(&:name).include? :rejected
-                  td
-                    = button_to t('.reject'), reject_admin_bulletin_path(bulletin), method: :patch, data: { turbo: true }, class: 'btn btn-link'
-                - if bulletin.aasm.states(permitted: true).map(&:name).include? :archived
-                  td
-                    = button_to t('.to_archive'), archive_admin_bulletin_path(bulletin), method: :patch, data: { turbo: true }, class: 'btn btn-link link-danger'
+                  = link_to t('.show'), bulletin_path(bulletin), class: 'me-2'
+                  - if bulletin.aasm.states(permitted: true).map(&:name).include? :published
+                    = link_to t('.publish'), publish_admin_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'me-2'
+                  - if bulletin.aasm.states(permitted: true).map(&:name).include? :rejected
+                    = link_to t('.reject'), reject_admin_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'me-2'
+                  - if bulletin.aasm.states(permitted: true).map(&:name).include? :archived
+                    = link_to t('.to_archive'), archive_admin_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'link-danger'
       .py-3
         = paginate @bulletins
