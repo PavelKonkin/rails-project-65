@@ -5,8 +5,9 @@ require 'test_helper'
 class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
   def setup
     sign_in users(:admin)
-    @category = categories(:one)
+    @category = categories(:three)
     @category_params = { name: 'test' }
+    @category_with_bulletins = categories(:one)
   end
 
   test 'should get index' do
@@ -41,6 +42,13 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
     id = @category.id
     delete admin_category_path @category
     assert { Category.where(id:).empty? }
+    assert_redirected_to admin_categories_path
+  end
+
+  test 'should not destroy category with bulletins' do
+    id = @category_with_bulletins.id
+    delete admin_category_path @category_with_bulletins
+    assert { Category.exists?(id:) }
     assert_redirected_to admin_categories_path
   end
 end

@@ -8,7 +8,7 @@
           = f.input :title_cont, label: false
           small.form-text.text-muted = t('.search_by_title')
         .col-4
-          = f.input :category_id_eq, as: :select, collection: Category.all, label: false
+          = f.input :category_id_eq, as: :select, collection: @categories, label: false
           small.form-text.text-muted = t('.select_category')
         .col-2
           = f.submit t('.search'), class: 'btn btn-primary me-2'

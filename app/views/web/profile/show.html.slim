@@ -14,7 +14,7 @@
                   = f.input :title_cont, label: false
                   small.form-text.text-muted = t('.search_by_title')
                 .col-4
-                  = f.input :state_eq, as: :select, collection: Bulletin.aasm.states.map(&:name), label_method: proc { |val| t(val) }, label: false
+                  = f.input :state_eq, as: :select, collection: @states, label_method: proc { |val| t(val) }, label: false
                   small.form-text.text-muted = t('.select_state')
                 .col-2
                   = f.submit t('.search'), class: 'btn btn-primary me-2'
@@ -36,9 +36,9 @@
                     td
                       = link_to t('.show'), bulletin_path(bulletin), class: 'me-2'
                       = link_to t('.edit'), edit_bulletin_path(bulletin), class: 'me-2'
-                      - if bulletin.aasm.states(permitted: true).map(&:name).include? :under_moderation
+                      - if bulletin.may_to_moderation?
                         = link_to t('.to_moderation'), to_moderation_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'me-2'
-                      - if bulletin.aasm.states(permitted: true).map(&:name).include? :archived
+                      - if bulletin.may_to_archive?
                         = link_to t('.to_archive'), archive_bulletin_path(bulletin), method: :patch, data: { turbo: true }, class: 'link-danger'
           .py-3
             = paginate @bulletins

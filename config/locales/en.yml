@@ -95,16 +95,21 @@ en:
           created: Category created
         destroy:
           deleted: Category deleted
+          cannot_be_deleted: Category cannot be deleted. There are bulletins that references to it
         form:
           new: Create
           edit: Update
+          create: Create
       bulletins:
         reject:
           rejected: Rejected
+          may_not_be_rejected: May not be rejected
         publish:
           published: Published
+          may_not_be_published: May not be published
         to_archive:
           archived: Archived
+          may_not_send_to_archive: May not send to archive
     session:
       destroy:
         signed_out: Signed out
@@ -144,16 +149,20 @@ en:
         new:
           new_bulletin: New bulletin
           back: Back
+          forbidden: Sign in to create bulletin
         update:
           bulletin_updated: Bulletin updated
         to_moderation:
           sent_to_moderation: Sent to moderstion
+          may_not_send_on_moderation: May not send on moderation
         archive:
           sent_to_archive: Sent to archive
+          may_not_send_to_archive: May not send to archive
         show:
           back: Back
         form:
           photo: Photo
+        forbidden: Sign in to edit bullletins
   helpers:
     submit:
       update: Update

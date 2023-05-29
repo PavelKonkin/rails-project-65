@@ -17,7 +17,7 @@
               = f.input :title_cont, label: false
               small.form-text.text-muted = t('.search_by_title')
             .col-4
-              = f.input :state_eq, as: :select, collection: Bulletin.aasm.states.map(&:name), label_method: proc { |val| t(val) }, label: false
+              = f.input :state_eq, as: :select, collection: @states, label_method: proc { |val| t(val) }, label: false
               small.form-text.text-muted = t('.select_state')
             .col-2
               = f.submit t('.search'), class: 'btn btn-primary me-2'
@@ -38,11 +38,11 @@
                 td = distance_of_time_in_words_to_now(bulletin.created_at)
                 td
                   = link_to t('.show'), bulletin_path(bulletin), class: 'me-2'
-                  - if bulletin.aasm.states(permitted: true).map(&:name).include? :published
+                  - if bulletin.may_publish?
                     = link_to t('.publish'), publish_admin_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'me-2'
-                  - if bulletin.aasm.states(permitted: true).map(&:name).include? :rejected
+                  - if bulletin.may_reject?
                     = link_to t('.reject'), reject_admin_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'me-2'
-                  - if bulletin.aasm.states(permitted: true).map(&:name).include? :archived
+                  - if bulletin.may_to_archive?
                     = link_to t('.to_archive'), archive_admin_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'link-danger'
       .py-3
         = paginate @bulletins

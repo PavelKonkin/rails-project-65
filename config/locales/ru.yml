@@ -19,6 +19,7 @@ ru:
       home: Главная
       my_bulletins: Мои объявления
       add_bulletin: Добавить объявление
+      sign_in: Войти
   web: 
     admin:
       bulletins:
@@ -42,10 +43,13 @@ ru:
           forbidden: Вход только для администраторов
         reject:
           rejected: Возвращено
+          may_not_be_rejected: Не может быть возвращено
         publish:
           published: Опубликовано
+          may_not_be_published: Не может быть опубликовано
         archive:
           archived: Отправлено в архив
+          may_not_send_to_archive: Невозможно отправить в архив
       users:
         index:
           bulletins_list: Cписок объявлений
@@ -95,9 +99,11 @@ ru:
           created: Категория создана
         destroy:
           deleted: Категория удалена
+          cannot_be_deleted: Категория не может быть удалена. Есть объявления, относящиеся к ней 
         form:
           new: Создать
           edit: Обновить
+          create: Cоздать
     session:
       destroy:
         signed_out: Выход выполнен
@@ -138,16 +144,20 @@ ru:
         new:
           new_bulletin: Новое объявление
           back: Назад
+          forbidden: Войдите для создания объявления
         update:
           bulletin_updated: Объявление обновлено
         to_moderation:
           sent_to_moderation: Отправлено на модерацию
+          may_not_send_on_moderation: Невозможно отправить на модерацию
         archive:
           sent_to_archive: Отправлено в архив
+          may_not_send_to_archive: Невозможно отправить в архив
         show:
           back: Назад
         form:
           photo: Фотография
+        forbidden: Войдите для редактирования своих объявлений
   helpers:
     submit:
       update: Сохранить изменения
