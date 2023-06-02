@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Web::ProfileController < Web::ApplicationController
-  include AuthUserConcern
   before_action :authenticate_user
 
   def show
