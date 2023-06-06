@@ -34,7 +34,7 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def archive?
-    author?
+    author? || admin?
   end
 
   def publish?
