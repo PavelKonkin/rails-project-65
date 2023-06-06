@@ -14,7 +14,7 @@
                   = f.input :title_cont, label: false
                   small.form-text.text-muted = t('.search_by_title')
                 .col-4
-                  = f.input :state_eq, as: :select, collection: @states, label_method: proc { |val| t(val) }, label: false
+                  = f.input :state_eq, as: :select, collection: Bulletin.aasm.states, label_method: :human_name, label: false
                   small.form-text.text-muted = t('.select_state')
                 .col-2
                   = f.submit t('.search'), class: 'btn btn-primary me-2'
@@ -25,7 +25,7 @@
                 tr
                   th = t('.title')
                   th = t('.state')
-                  th = t('.created_at')
+                  th = t('.updated_at')
                   th = t('.actions')
               tbody
                 - @bulletins.each do |bulletin|

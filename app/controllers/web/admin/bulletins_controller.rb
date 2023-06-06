@@ -4,7 +4,6 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
   def index
     @q = Bulletin.ransack(params[:q])
     @bulletins = @q.result.order(created_at: :desc).page(params[:page])
-    @states = Bulletin.aasm.states.map(&:name)
   end
 
   def show

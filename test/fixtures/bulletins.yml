@@ -20,3 +20,10 @@ three:
   category: two
   user: one
   state: archived
+
+four:
+  title: MyString
+  description: MyText
+  category: two
+  user: admin
+  state: under_moderation

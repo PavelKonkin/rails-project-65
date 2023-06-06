@@ -5,7 +5,6 @@ class Web::ProfileController < Web::ApplicationController
 
   def show
     @q = Bulletin.ransack(params[:q])
-    @bulletins = @q.result.where(user: current_user).order(created_at: :desc).page(params[:page])
-    @states = Bulletin.aasm.states.map(&:name)
+    @bulletins = @q.result.where(user: current_user).order(updated_at: :desc).page(params[:page])
   end
 end

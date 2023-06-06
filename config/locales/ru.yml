@@ -41,6 +41,7 @@ ru:
           search: Найти
           reset: Сброс
           forbidden: Вход только для администраторов
+          updated_at: Дата обновления
         reject:
           rejected: Возвращено
           may_not_be_rejected: Не может быть возвращено
@@ -50,6 +51,7 @@ ru:
         archive:
           archived: Отправлено в архив
           may_not_send_to_archive: Невозможно отправить в архив
+          not_authorized: Нет прав
       users:
         index:
           bulletins_list: Cписок объявлений
@@ -104,12 +106,18 @@ ru:
           new: Создать
           edit: Обновить
           create: Cоздать
+      shared:
+        nav:
+          bulletins_list: Cписок объявлений
+          users_list: Список пользователей
+          categories_list: Список категорий
     session:
       destroy:
         signed_out: Выход выполнен
     auth:
       callback:
         signed_in: Вход выполнен
+        sign_in_failed: Не удалось войти
     profile:
       show:
           my_bulletins: Мои объявления
@@ -128,6 +136,7 @@ ru:
           reset: Сброс
           ago: назад
           forbidden: Войдите для доступа к профилю
+          updated_at: Дата обновления
     bulletins:
         index:
           bulletin_board: Доска объявлений
@@ -172,3 +181,12 @@ ru:
       previous: "Предыдущая"
       next: "Следующая"
       truncate: "&hellip;"
+  activerecord:
+    attributes:
+      bulletin:
+        state:
+          archived: В архиве
+          draft: Черновик
+          under_moderation: На модерации
+          rejected: Возвращено
+          published: Опубликовано

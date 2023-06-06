@@ -19,6 +19,7 @@ en:
       home: Home
       my_bulletins: My bulletins
       add_bulletin: Add bulletin
+      sign_in: Sign in
   web:
     admin:
       bulletins:
@@ -40,12 +41,17 @@ en:
           search: Search
           reset: Reset
           forbidden: Admins only
+          updated_at: Updated at
         reject:
           rejected: Rejected
+          may_not_be_rejected: May not be rejected
         publish:
           published: Published
+          may_not_be_published: May not be published
         archive:
           archived: Archived
+          may_not_send_to_archive: May not send to archive
+          not_authorized: Not authorized
       users:
         index:
           bulletins_list: Bulletins list
@@ -100,47 +106,44 @@ en:
           new: Create
           edit: Update
           create: Create
-      bulletins:
-        reject:
-          rejected: Rejected
-          may_not_be_rejected: May not be rejected
-        publish:
-          published: Published
-          may_not_be_published: May not be published
-        to_archive:
-          archived: Archived
-          may_not_send_to_archive: May not send to archive
+      shared:
+        nav:
+          bulletins_list: Bulletins list
+          users_list: Users list
+          categories_list: Categories list
     session:
       destroy:
         signed_out: Signed out
     auth:
       callback:
         signed_in: Signed in
+        sign_in_failed: Sign in failed
     profile:
       show:
-        bulletin_board: Bulletin board
+        my_bulletins: My bulletins
+        add_bulletin: Add bulletin
+        title: Title
+        state: State
+        created_at: Created at
+        actions: Actions
+        show: Show
+        edit: Edit
+        to_archive: To archive
+        to_moderation: To moderation
         search_by_title: Search by title
-        select_category: Select category
+        select_state: Select state
         search: Search
         reset: Reset
-        ago: ago
+        forbidden: You must sign in to access profile page
+        updated_at: Updated at
     bulletins:
         index:
-          my_bulletins: My bulletins
-          add_bulletin: Add bulletin
-          title: Title
-          state: State
-          created_at: Created at
-          actions: Actions
-          show: Show
-          edit: Edit
-          to_archive: To archive
-          to_moderation: To moderation
+          bulletin_board: Bulletin board
           search_by_title: Search by title
-          select_state: Select state
+          select_category: Select category
           search: Search
           reset: Reset
-          forbidden: You must sign in to access profile page
+          ago: ago
         edit:
           edit_bulletin: Edit bulletin
           back: Back
@@ -177,3 +180,12 @@ en:
       previous: "Prev"
       next: "Next"
       truncate: "&hellip;"
+  activerecord:
+    attributes:
+      bulletin:
+        state:
+          archived: Archived
+          draft: Draft
+          under_moderation: Under moderation
+          rejected: Rejected
+          published: Published

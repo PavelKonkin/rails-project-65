@@ -5,7 +5,7 @@ require 'test_helper'
 class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
   def setup
     @bulletin_draft = bulletins(:one)
-    @bulletin_under_moderation = bulletins(:two)
+    @bulletin_under_moderation = bulletins(:four)
     sign_in users(:admin)
   end
 
@@ -26,7 +26,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to admin_root_url
   end
 
-  test 'should make transition to reject publish from under_moderation' do
+  test 'should make transition to reject from under_moderation' do
     patch reject_admin_bulletin_path(@bulletin_under_moderation)
     @bulletin_under_moderation.reload
     assert { @bulletin_under_moderation.rejected? }

@@ -9,11 +9,12 @@ class Web::AuthController < Web::ApplicationController
     # TODO: Убрать admin после демонстрации
     user.admin = true
 
-    user.save if user.changed?
-
-    sign_in user
-
-    redirect_to root_path, notice: t('.signed_in')
+    if user.save
+      sign_in user
+      redirect_to root_path, notice: t('.signed_in')
+    else
+      redirect_to auth_request_path :github, notice: t('.sign_in_failed')
+    end
   end
 
   private
