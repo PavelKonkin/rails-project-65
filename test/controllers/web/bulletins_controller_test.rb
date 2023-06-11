@@ -5,8 +5,6 @@ require 'test_helper'
 class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   def setup
     @bulletin = bulletins(:one)
-    @bulletin2 = bulletins(:two)
-    @bulletin3 = bulletins(:three)
     sign_in users(:one)
     @image = fixture_file_upload('one.jpg', 'image/jpeg')
     @update_image = fixture_file_upload('three.jpeg', 'image/jpeg')
@@ -39,7 +37,8 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update' do
     sign_in users(:two)
-    patch bulletin_url(@bulletin2), params: { bulletin: { title: @bulletin.title, description: @bulletin.description, user_id: @bulletin2.user_id, category_id: @bulletin.category_id, image: @update_image } }
+    @bulletin_to_update = bulletins(:two)
+    patch bulletin_url(@bulletin_to_update), params: { bulletin: { title: @bulletin.title, description: @bulletin.description, user_id: @bulletin_to_update.user_id, category_id: @bulletin.category_id, image: @update_image } }
     assert_response :redirect
   end
 
@@ -58,9 +57,10 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not make transition to under_moderation from archive' do
-    patch to_moderation_bulletin_path(@bulletin3)
-    @bulletin3.reload
-    assert { @bulletin3.archived? }
+    @bulletin_archived = bulletins(:three)
+    patch to_moderation_bulletin_path(@bulletin_archived)
+    @bulletin_archived.reload
+    assert { @bulletin_archived.archived? }
     assert_redirected_to profile_url
   end
 end

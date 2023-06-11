@@ -39,11 +39,11 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
   def destroy
     @category = Category.find(params[:id])
     authorize @category
-    if @category.bulletins.empty?
+    if @category.bulletins.exists?
+      redirect_to admin_categories_path, notice: t('.cannot_be_deleted')
+    else
       @category.destroy
       redirect_to admin_categories_path, notice: t('.deleted')
-    else
-      redirect_to admin_categories_path, notice: t('.cannot_be_deleted')
     end
   end
 

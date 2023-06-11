@@ -8,7 +8,7 @@ class Web::SessionControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should sign_out' do
-    get sessions_path
+    delete session_path
     assert { session[:user_id].nil? }
     assert_redirected_to root_path
   end
